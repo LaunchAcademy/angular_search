@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>Angular Test</title>
+  </head>
+
+  <body>
+
+  <div id="searcher" ng-controller='PersonSearch'>
+    <button ng-click="toggleForm()">Show Filter Form</button>
+    <div id="search-form" style="display:none">
+      <div>
+        <label>First Name</label>
+        <input type="text" id="first_name">
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input type="text" id="last_name">
+      </div>
+    </div>
+  </div>
+
+  <script src="scripts/vendor/jquery.1.11.1.js" type="text/javascript">
+  </script>
+  <script src="scripts/vendor/angular.1.2.16.js" type="text/javascript">
+  </script>
+
+  <script src="scripts/app.js"></script>
+  </body>
+</html>
