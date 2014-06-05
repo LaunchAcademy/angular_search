@@ -1,6 +1,8 @@
 function SearchForm(){
   this.id = '#search-form';
   this.shown = false;
+  this.firstName = '';
+  this.lastName = '';
 
   this.$el = function(){
     return $(this.id);
@@ -12,6 +14,13 @@ function SearchForm(){
       duration: 100
     });
   };
+
+  this.getFilter = function(){
+    return {
+      firstName: this.firstName,
+      lastName: this.lastName
+    }
+  }
 }
 
 function PersonSearch($scope) {
@@ -20,4 +29,31 @@ function PersonSearch($scope) {
   $scope.toggleForm = function(){
     $scope.searchForm.toggle();
   };
+
+  $scope.allPeople = [
+    {
+      firstName: 'Dan',
+      lastName: 'Pickett'
+    },
+    {
+      firstName: 'Kevin',
+      lastName: 'Sun'
+    },
+    {
+      firstName: 'Ben',
+      lastName: 'Calegari'
+    }
+  ];
+
+  $scope.people = $scope.allPeople;
+
+  $scope.filterPeople = function(){
+    var newPeople = [];
+    angular.forEach($scope.allPeople, function(person){
+      if(person.firstName === $scope.searchForm.firstName){
+        newPeople.push(person);
+      }
+    });
+    $scope.people = newPeople;
+  }
 }
